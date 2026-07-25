@@ -1,0 +1,89 @@
+/* ============================================================
+   CartShare — Print Stylesheet
+   Clean receipt layout for printing
+   ============================================================ */
+
+@media print {
+  /* Hide everything except the receipt */
+  body * {
+    visibility: hidden;
+  }
+
+  .receipt-print-area,
+  .receipt-print-area * {
+    visibility: visible;
+  }
+
+  .receipt-print-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.5in;
+    background: #fff;
+  }
+
+  /* Hide navigation, buttons, forms */
+  .room-header,
+  .add-item-area,
+  .btn,
+  .activity-section,
+  .toast-container,
+  .modal-footer .btn,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Receipt styling */
+  .receipt-wrapper {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .receipt-wrapper .receipt-header {
+    border-bottom: 2px solid #333;
+  }
+
+  .receipt-wrapper .receipt-header h3 {
+    font-size: 1.75rem;
+  }
+
+  .receipt-wrapper table th {
+    border-bottom: 2px solid #333;
+    color: #333;
+  }
+
+  .receipt-wrapper table td {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .receipt-wrapper table .receipt-total td {
+    border-top: 2px solid #333;
+    font-size: 1.25rem;
+    color: #000;
+  }
+
+  .receipt-wrapper .receipt-footer {
+    border-top: 2px solid #333;
+    color: #555;
+  }
+
+  /* Force background colors to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ensure prices are aligned */
+  .receipt-wrapper .text-end {
+    text-align: right !important;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 0.5in;
+    size: auto;
+  }
+}
