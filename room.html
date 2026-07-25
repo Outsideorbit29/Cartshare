@@ -85,6 +85,11 @@
               </button>
             </div>
 
+            <!-- Product Catalog -->
+            <div id="catalogContainer" class="no-print" style="padding: 1rem 1.5rem 0.5rem; border-bottom: 1px solid var(--cs-border);">
+              <!-- Rendered by js/catalog.js -->
+            </div>
+
             <!-- Add Item Form -->
             <div class="add-item-area no-print">
               <form id="addItemForm" class="row g-2 align-items-end">
@@ -93,9 +98,9 @@
                   <input type="text" class="form-control" id="itemName" placeholder="e.g. Pizza" maxlength="60" autocomplete="off">
                 </div>
                 <div class="col-md-3">
-                  <label for="itemPrice" class="form-label">Price ($)</label>
+                  <label for="itemPrice" class="form-label">Price (₹)</label>
                   <div class="input-group">
-                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">₹</span>
                     <input type="number" class="form-control" id="itemPrice" placeholder="0.00" step="0.01" min="0.01">
                   </div>
                 </div>
@@ -196,6 +201,7 @@
   <script src="js/cart.js"></script>
   <script src="js/activity.js"></script>
   <script src="js/receipt.js"></script>
+  <script src="js/catalog.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

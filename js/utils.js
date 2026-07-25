@@ -31,7 +31,7 @@ const CartShareUtils = {
    * Format a number as currency (USD)
    */
   formatCurrency(amount) {
-    return '$' + Number(amount).toFixed(2);
+    return '₹' + Number(amount).toFixed(0);
   },
 
   /**

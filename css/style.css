@@ -628,7 +628,242 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.75rem 1rem;
 }
 
-/* ----- Responsive ----- */
+/* ============================================================
+   Product Catalog (Blinkit-style)
+   ============================================================ */
+
+.catalog-search {
+  margin-bottom: 0.75rem;
+}
+.catalog-search .input-group-text {
+  background: var(--cs-surface);
+  border-right: none;
+  color: var(--cs-muted);
+}
+.catalog-search .form-control {
+  border-left: none;
+  font-size: 0.9375rem;
+}
+.catalog-search .form-control:focus {
+  border-color: var(--cs-primary);
+  box-shadow: none;
+}
+.catalog-search .form-control:focus + .input-group-text,
+.catalog-search .form-control:focus ~ .input-group-text {
+  border-color: var(--cs-primary);
+}
+
+/* Category Tabs */
+.catalog-tabs {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.catalog-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.catalog-tab {
+  flex-shrink: 0;
+  font-family: var(--cs-font-display);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 100px;
+  border: 1.5px solid var(--cs-border);
+  background: var(--cs-surface);
+  color: var(--cs-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.catalog-tab:hover {
+  border-color: var(--cs-primary);
+  color: var(--cs-primary);
+  background: var(--cs-primary-light);
+}
+.catalog-tab.active {
+  background: var(--cs-primary);
+  color: #fff;
+  border-color: var(--cs-primary);
+}
+
+/* Product Grid */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+.catalog-grid::-webkit-scrollbar {
+  width: 4px;
+}
+.catalog-grid::-webkit-scrollbar-thumb {
+  background: var(--cs-border);
+  border-radius: 4px;
+}
+
+/* Product Card */
+.product-card {
+  background: var(--cs-surface);
+  border: 1.5px solid var(--cs-border);
+  border-radius: var(--cs-radius-sm);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.product-card:hover {
+  border-color: var(--cs-primary);
+  box-shadow: var(--cs-shadow-sm);
+}
+
+.product-emoji {
+  font-size: 2.2rem;
+  text-align: center;
+  line-height: 1;
+}
+
+.product-info {
+  text-align: center;
+  flex: 1;
+}
+.product-name {
+  font-family: var(--cs-font-display);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  color: var(--cs-text);
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-price {
+  font-family: var(--cs-font-mono);
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--cs-text);
+  margin-top: 0.2rem;
+}
+.product-unit {
+  font-family: var(--cs-font-body);
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--cs-muted);
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+/* Product Quantity Selector */
+.qty-selector {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--cs-primary);
+  border-radius: var(--cs-radius-xs);
+  overflow: hidden;
+}
+.qty-selector .qty-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--cs-surface);
+  color: var(--cs-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+.qty-selector .qty-btn:hover {
+  background: var(--cs-primary-light);
+}
+.qty-selector .qty-value {
+  width: 24px;
+  text-align: center;
+  font-family: var(--cs-font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--cs-text);
+  border-left: 1px solid var(--cs-primary);
+  border-right: 1px solid var(--cs-primary);
+  line-height: 28px;
+}
+
+/* Add Button */
+.add-btn {
+  font-family: var(--cs-font-display);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.75rem;
+  border: 2px solid var(--cs-success);
+  border-radius: var(--cs-radius-xs);
+  background: var(--cs-surface);
+  color: var(--cs-success);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.add-btn:hover {
+  background: var(--cs-success);
+  color: #fff;
+}
+.add-btn.added {
+  background: var(--cs-success);
+  color: #fff;
+  border-color: var(--cs-success);
+}
+
+/* Added Animation */
+.product-added {
+  animation: added-flash 0.4s ease;
+}
+@keyframes added-flash {
+  0% { background: var(--cs-surface); }
+  50% { background: var(--cs-success-light); border-color: var(--cs-success); }
+  100% { background: var(--cs-surface); }
+}
+
+/* Empty catalog state */
+.catalog-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--cs-muted);
+}
+.catalog-empty i {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 991.98px) {
+  .activity-section {
+    margin-top: 1.5rem;
+  }
+  .activity-feed {
+    max-height: 300px;
 @media (max-width: 991.98px) {
   .activity-section {
     margin-top: 1.5rem;
@@ -638,7 +873,41 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Catalog responsive */
+@media (max-width: 991.98px) {
+  .catalog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 350px;
+  }
+}
 @media (max-width: 767.98px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-height: 300px;
+  }
+  .product-emoji {
+    font-size: 1.8rem;
+  }
+  .product-name {
+    font-size: 0.75rem;
+  }
+  .product-price {
+    font-size: 0.8125rem;
+  }
+  .add-btn {
+    font-size: 0.6875rem;
+    padding: 0.25rem 0.5rem;
+  }
+  .qty-selector .qty-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8125rem;
+  }
+  .qty-selector .qty-value {
+    width: 20px;
+    font-size: 0.75rem;
+    line-height: 24px;
+  }
   .landing-wrapper {
     padding: 1rem;
     align-items: flex-start;
@@ -695,6 +964,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 575.98px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  .catalog-tab {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+  }
   .landing-brand .brand-icon {
     font-size: 2rem;
   }

@@ -131,6 +131,7 @@
     // --- Render Initial State ---
     CartShareCart.renderCart(room);
     CartShareActivity.renderActivityLog(room);
+    CartShareCatalog.renderCatalog(roomId, userName);
 
     // --- Event Listeners ---
 
