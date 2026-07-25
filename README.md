@@ -1,125 +1,103 @@
-# 🛒 CartShare — Collaborative Shopping Cart
+# 🛒 CartShare
 
-**Stack the cart. Share the cost.**
+> Stack the cart. Share the cost.
 
-CartShare is a real-time collaborative shopping cart web app designed for shared living environments — student dorms, office teams, and travel groups. It solves the chaos of coordinating joint purchases by providing a shared, transparent, and synchronized cart experience.
+A real-time collaborative shopping cart for shared living — dorm rooms, office teams, and travel groups. Create a room, share the code, and everyone adds items to one cart with full transparency.
+
+---
 
 ## Features
 
-- **🔑 Room System**: Create or join a unique room using a 6-character code
-- **🛍️ Shared Cart**: Add/remove items with prices and quantities, visible to everyone in the room
-- **⚡ Real-time Sync**: Cross-tab synchronization using the Browser's BroadcastChannel API — changes in one tab instantly reflect in all others
-- **📋 Activity Log**: See who added, removed, or updated what, with timestamps
-- **🧾 Printable Receipt**: Generate an audit-ready, formatted receipt for the group
-- **📱 Fully Responsive**: Works on phones, tablets, and desktops (Bootstrap 5 + custom styles)
-- **💾 Persistent Data**: Cart state is saved to localStorage — refresh without losing items
+| Feature | Description |
+|---------|-------------|
+| **Room System** | Create or join a room via a 6-character code |
+| **Shared Cart** | Add, remove, and update items — everyone sees the same cart |
+| **Real-time Sync** | Changes sync across browser tabs instantly (BroadcastChannel API) |
+| **Activity Log** | Timestamped feed showing who did what |
+| **Printable Receipt** | Formatted receipt with itemized totals — click Print to get a clean copy |
+| **Responsive** | Works on mobile, tablet, and desktop (Bootstrap 5) |
+| **Persistent** | Cart data survives page refreshes (localStorage) |
 
 ## How It Works
 
-1. **Create a Room**: Enter your name and click "Create a Room" — you'll get a unique 6-character code
-2. **Invite Others**: Share the code with your group. They open the app, enter their name and code, and click "Join Room"
-3. **Add Items**: Everyone can add items with prices and quantities — the cart updates in real-time for all participants
-4. **Track Activity**: The activity log shows who did what and when
-5. **Generate Receipt**: When the order is ready, generate a printable receipt with itemized totals
+1. Enter your name → **Create a Room** (or **Join** with a code)
+2. Share the 6-character room code with your group
+3. Everyone adds items with prices and quantities
+4. The cart and activity log update for all participants in real-time
+5. Click **Receipt** → **Print** for a clean, itemized summary
 
-> **Note**: Since there's no backend, "multiple users" are simulated by opening the room in multiple browser tabs with different usernames. All tabs sync via the BroadcastChannel API.
-
-## Live Demo
-
-[Deploy to Vercel, Netlify, or GitHub Pages — see instructions below]
+> Multiple users are simulated by opening the room in separate browser tabs with different names. All tabs sync via BroadcastChannel.
 
 ## Tech Stack
 
-- **HTML5** — Semantic markup
-- **CSS3** — Flexbox, Grid, custom properties, responsive design
-- **Bootstrap 5** — Responsive grid, components, utilities
-- **JavaScript (Vanilla ES6)** — No frameworks, pure DOM manipulation
-- **BroadcastChannel API** — Cross-tab real-time synchronization
+- **HTML5 / CSS3** — Flexbox, Grid, custom properties, Bootstrap 5
+- **JavaScript (ES6)** — Vanilla, no frameworks, pure DOM manipulation
+- **BroadcastChannel API** — Cross-tab real-time sync
 - **localStorage** — Client-side data persistence
 - **Font Awesome 6** — Icons
 
-## Folder Structure
+## Project Structure
 
 ```
-├── index.html              # Landing page: create/join room
-├── room.html               # Room page: shared cart + activity + receipt
+├── index.html          # Landing page — create / join room
+├── room.html           # Room page — cart, activity, receipt
 ├── css/
-│   ├── style.css           # Main stylesheet (design tokens, layout, components)
-│   └── print.css           # Print media rules for receipt
+│   ├── style.css       # Design system, layout, components
+│   └── print.css       # Print media rules for receipt
 ├── js/
-│   ├── utils.js            # Helper utilities (ID generation, formatting, toasts)
-│   ├── storage.js          # localStorage CRUD operations
-│   ├── sync.js             # BroadcastChannel cross-tab sync
-│   ├── room.js             # Room management (create, join, leave)
-│   ├── cart.js             # Cart item logic + rendering
-│   ├── activity.js         # Activity log + rendering
-│   ├── receipt.js          # Receipt generation + print
-│   └── app.js              # Main entry point, page router
+│   ├── utils.js        # Helpers — IDs, formatting, toasts
+│   ├── storage.js      # localStorage CRUD
+│   ├── sync.js         # BroadcastChannel sync layer
+│   ├── room.js         # Create / join / leave room
+│   ├── cart.js         # Cart items + table rendering
+│   ├── activity.js     # Activity log + feed rendering
+│   ├── receipt.js      # Receipt generation + print
+│   └── app.js          # Page router + initialization
 ├── assets/
-│   └── favicon.svg         # Cart icon
-└── README.md               # This file
+│   └── favicon.svg     # Cart icon
+└── README.md
 ```
 
-## How to Run Locally
+## Getting Started
 
-### Option 1: Direct (No Server)
-Simply open `index.html` in your browser. Due to module loading via `<script>` tags (not ES modules), this works directly from the file system.
-
-### Option 2: Local Server (Recommended)
+**Option 1 — Local server (recommended):**
 ```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js (npx)
-npx serve .
-
-# Using VS Code Live Server extension
-# Right-click index.html → Open with Live Server
+python -m http.server 8080
+# then open http://localhost:8080
 ```
 
-Then open `http://localhost:8000` in your browser.
+**Option 2 — Direct file open:**
+Just double-click `index.html` in your file explorer.
 
 ### Testing Multi-User Collaboration
-1. Open the app in your browser
-2. Enter a name and create a room
-3. Copy the room code
-4. Open a **new tab** and navigate to the same URL
-5. Enter a **different name** and join using the same room code
-6. Both tabs are now in the same room — add items in one tab and watch them appear in the other
+
+1. Open `index.html` in your browser
+2. Enter a name and **Create a Room** → note the 6-character code
+3. Open a **new tab**, go to the same URL
+4. Enter a different name, switch to **Join Room**, enter the code
+5. Add items in either tab — both tabs update instantly
 
 ## Deployment
 
-### Deploy to Netlify
-1. Push the repository to GitHub
-2. Go to [netlify.com](https://netlify.com) and click "Add new site" → "Import an existing project"
-3. Connect your GitHub repository
-4. Deploy settings: No build command needed, publish directory: root (`/`)
-5. Click "Deploy site"
+**Netlify / Vercel:** Push to GitHub → import repo → publish directory is root (`/`) → deploy.
 
-### Deploy to Vercel
-1. Push the repository to GitHub
-2. Go to [vercel.com](https://vercel.com) and click "Add New" → "Project"
-3. Import your GitHub repository
-4. Framework preset: "Other", no build command
-5. Click "Deploy"
+**GitHub Pages:** Settings → Pages → Source: `main` branch, folder `/ (root)` → Save.
 
-### Deploy to GitHub Pages
-1. Go to your repository Settings → Pages
-2. Source: Deploy from a branch
-3. Branch: `main`, folder: `/ (root)`
-4. Save — your site will be live at `https://<username>.github.io/<repo>/`
+No build step required — this is a static site.
 
 ## Design
 
-CartShare uses a custom design system with:
-- **Color palette**: Indigo (#4361EE) for trust, Pink (#F72585) for energetic CTAs, Gold (#F9C74F) for highlights — a distinctive alternative to typical green/orange shopping apps
-- **Typography**: Space Grotesk (headings) + Inter (body) + JetBrains Mono (codes/prices)
-- **Signature element**: Animated room code badge that pulses with activity, making collaboration visible at a glance
+| Token | Value | Usage |
+|-------|-------|-------|
+| Primary | `#4361EE` (Indigo) | Brand, headers, active states |
+| Accent | `#F72585` (Pink) | CTAs, add-to-cart button |
+| Warm | `#F9C74F` (Gold) | Highlights, activity indicators |
+| Display | Space Grotesk | Headings, room code badge |
+| Body | Inter | All body text |
+| Mono | JetBrains Mono | Prices, room codes |
+
+**Signature element:** The room code badge in the header pulses with a green glow when activity happens in the room.
 
 ## Submission
 
-This project was built as part of an internship program. Submission format: `BatchID_FullName_CartShare`
-
-## License
-
-MIT
+Format: `BatchID_FullName_CartShare`
