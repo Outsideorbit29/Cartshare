@@ -52,6 +52,13 @@ const CartShareCart = (() => {
     // Broadcast update
     CartShareSync.broadcast('ROOM_UPDATE', roomId, { room: room });
 
+    // Re-render local UI immediately
+    const updatedRoom = CartShareStorage.getRoom(roomId);
+    if (updatedRoom) {
+      renderCart(updatedRoom);
+      CartShareActivity.renderActivityLog(updatedRoom);
+    }
+
     CartShareUtils.showToast(`Added ${item.name} to cart`, 'success');
     return item;
   }
@@ -80,6 +87,13 @@ const CartShareCart = (() => {
 
     // Broadcast update
     CartShareSync.broadcast('ROOM_UPDATE', roomId, { room: room });
+
+    // Re-render local UI immediately
+    const updatedRoom = CartShareStorage.getRoom(roomId);
+    if (updatedRoom) {
+      renderCart(updatedRoom);
+      CartShareActivity.renderActivityLog(updatedRoom);
+    }
 
     CartShareUtils.showToast(`Removed ${item.name} from cart`, 'info');
     return true;
@@ -117,6 +131,13 @@ const CartShareCart = (() => {
     // Broadcast update
     CartShareSync.broadcast('ROOM_UPDATE', roomId, { room: room });
 
+    // Re-render local UI immediately
+    const updatedRoom = CartShareStorage.getRoom(roomId);
+    if (updatedRoom) {
+      renderCart(updatedRoom);
+      CartShareActivity.renderActivityLog(updatedRoom);
+    }
+
     return true;
   }
 
@@ -141,6 +162,13 @@ const CartShareCart = (() => {
 
     // Broadcast update
     CartShareSync.broadcast('ROOM_UPDATE', roomId, { room: room });
+
+    // Re-render local UI immediately
+    const updatedRoom = CartShareStorage.getRoom(roomId);
+    if (updatedRoom) {
+      renderCart(updatedRoom);
+      CartShareActivity.renderActivityLog(updatedRoom);
+    }
 
     CartShareUtils.showToast('Cart cleared', 'info');
     return true;
