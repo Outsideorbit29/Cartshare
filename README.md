@@ -11,6 +11,7 @@ A real-time collaborative shopping cart for shared living — dorm rooms, office
 | Feature | Description |
 |---------|-------------|
 | **Room System** | Create or join a room via a 6-character code |
+| **Product Catalog** | 57 products across 8 categories with search, filters, and quick-add (Blinkit-style) |
 | **Shared Cart** | Add, remove, and update items — everyone sees the same cart |
 | **Real-time Sync** | Changes sync across browser tabs instantly (BroadcastChannel API) |
 | **Activity Log** | Timestamped feed showing who did what |
@@ -50,6 +51,7 @@ A real-time collaborative shopping cart for shared living — dorm rooms, office
 │   ├── sync.js         # BroadcastChannel sync layer
 │   ├── room.js         # Create / join / leave room
 │   ├── cart.js         # Cart items + table rendering
+│   ├── catalog.js      # Product catalog — data, categories, search, rendering
 │   ├── activity.js     # Activity log + feed rendering
 │   ├── receipt.js      # Receipt generation + print
 │   └── app.js          # Page router + initialization
@@ -84,6 +86,18 @@ Just double-click `index.html` in your file explorer.
 **GitHub Pages:** Settings → Pages → Source: `main` branch, folder `/ (root)` → Save.
 
 No build step required — this is a static site.
+
+## Product Catalog
+
+Blinkit-style product browsing integrated into the room page:
+
+- **8 categories**: Fruits & Vegetables, Dairy & Breakfast, Snacks & Munchies, Cold Drinks & Juices, Bakery & Biscuits, Cleaning Essentials, Chicken/Meat/Fish, Atta/Rice/Dal
+- **57 products** with emoji icons, prices in ₹, and unit labels (per kg, per dozen, etc.)
+- **Search bar** — filter products by name across all categories
+- **Category tabs** — horizontally scrollable, click to filter
+- **Quantity selector** (−/+) on each card — adjust before adding
+- **Quick-add button** — "ADD" adds directly to the shared cart with visual feedback
+- **Manual entry** — the custom add-item form is still available below the catalog
 
 ## Design
 
